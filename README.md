@@ -78,18 +78,22 @@ query_type → type of DNS query
 dns_reply_code → response code
 
 Example extraction using regex:
+
 index=* sourcetype=dns_sample | regex _raw="(?i)\b(dns|domain|query|response|port 53)\b"
 
 3. Detect Anomalies
 Look for unusual patterns or spikes in DNS activity:
+
 index=* sourcetype=dns_sample | stats count by fqdn
 
-4. Identify Top DNS Sources
+5. Identify Top DNS Sources
 Count the most frequent queries and sources:
+
 index=* sourcetype=dns_sample | top fqdn, src_ip
 
-5. Investigate Suspicious Domains
+6. Investigate Suspicious Domains
 Search for domains associated with malicious activity using threat intelligence:
+
 index=* sourcetype=dns_sample fqdn="malicious.com"
 
 ## Best Practices
