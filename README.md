@@ -89,13 +89,13 @@ Look for unusual patterns or spikes in DNS activity:
 
 index=* sourcetype=dns_sample | stats count by fqdn
 
-#### 5. Identify Top DNS Sources
+#### 4. Identify Top DNS Sources
    
 Count the most frequent queries and sources:
 
 index=* sourcetype=dns_sample | top fqdn, src_ip
 
-#### 6. Investigate Suspicious Domains
+#### 5. Investigate Suspicious Domains
 Search for domains associated with malicious activity using threat intelligence:
 
 index=* sourcetype=dns_sample fqdn="malicious.com"
