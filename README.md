@@ -60,11 +60,13 @@ Replace <your_index> and <your_sourcetype> with the values assigned during uploa
 ## Analyzing DNS Logs in Splunk
 Once your data is ingested, you can start analyzing DNS events.
 
-1. Basic Search for DNS Events
+#### 1. Basic Search for DNS Events
 Retrieve DNS events using:
 
 index=* sourcetype=dns_sample
-2. Extract Key Fields
+
+#### 2. Extract Key Fields
+
 Identify and extract relevant DNS fields such as:
 
 src_ip → source IP
@@ -81,17 +83,19 @@ Example extraction using regex:
 
 index=* sourcetype=dns_sample | regex _raw="(?i)\b(dns|domain|query|response|port 53)\b"
 
-3. Detect Anomalies
+#### 3. Detect Anomalies
+
 Look for unusual patterns or spikes in DNS activity:
 
 index=* sourcetype=dns_sample | stats count by fqdn
 
-5. Identify Top DNS Sources
+#### 5. Identify Top DNS Sources
+   
 Count the most frequent queries and sources:
 
 index=* sourcetype=dns_sample | top fqdn, src_ip
 
-6. Investigate Suspicious Domains
+#### 6. Investigate Suspicious Domains
 Search for domains associated with malicious activity using threat intelligence:
 
 index=* sourcetype=dns_sample fqdn="malicious.com"
